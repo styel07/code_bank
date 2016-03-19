@@ -1,0 +1,21 @@
+/*
+  Technical Screen Feb 29, 2016 w/ Jason (reviewsnap.com -frontend)
+**/
+
+// whats wrong with this?
+// the var btnNum does not trigger the alert
+//    - because it not within scope, to fix that you can use the variable 'let' in ES6 which takes care of block scope
+<script>
+var prizes = ['A Unicorn!', 'A Hug!', 'Fresh Laundry!'];
+for (let btnNum = 0; btnNum < prizes.length; btnNum++) {
+  // for each of our buttons, when the user clicks it...
+  document.getElementById('btn-' + btnNum).onclick = function() {
+    // tell her what she's won!
+    alert(prizes[btnNum]);
+  };
+}
+</script>
+
+<button id="btn-0">Button 1!</button>
+<button id="btn-1">Button 2!</button>
+<button id="btn-2">Button 3!</button>
