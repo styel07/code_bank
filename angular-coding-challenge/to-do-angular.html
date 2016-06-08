@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div ng-app="todoApp" class="container">
+    <div ng-controller="todoCtrl">
+      <form class="form-inline" ng-submit="addTask()">
+        <div class="form-group">
+          <input class="form-control" ng-model="newTask" type="text" required placeholder="Enter a task" />
+        </div>
+        <button class="btn btn-primary" type="submit">Add Task</button>
+      </form>
+      <div ng-if="tasks.length">
+      <hr>
+      <div class="well well-sm">
+        Total tasks: {{tasks.length}}<br>
+        Completed Tasks: {{compTasks()}}<br>
+        <button class="btn" ng-class="{'btn-primary':currView=='all'}" ng-click="changeView('all')">All</button>
+        <button class="btn" ng-class="{'btn-primary':currView=='comp'}"  ng-click="changeView('comp')">Completed</button>
+        <button class="btn"ng-class="{'btn-primary':currView=='pend'}"  ng-click="changeView('pend')">Pending</button>
+      </div>
+
+      <hr>
+      <div class="tasks {{currView}}">
+        <ul class="list-group">
+        <li class="list-group-item clearfix" ng-repeat="(key,task) in tasks" ng-class="{'completed':task.IsCompleted,'pending':!task.IsCompleted}"> <div class="checkbox pull-left" >
+        <label><input ng-model="task.IsCompleted" type="checkbox"> {{task.Subject}} </label>
+        </div><button class="pull-right" ng-click="removeTask(key)">Remove</button></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="to-do-controller.js"></script>
+</body>
+</html>
+
+

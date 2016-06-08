@@ -1,0 +1,14 @@
+.ng-invalid,.ng-invalid:focus {
+  border-color:#B00;
+}
+
+.completed{
+   color:#00F;
+}
+
+.comp .pending{
+  display:none;
+}
+.pend .completed {
+  display:none;
+}
