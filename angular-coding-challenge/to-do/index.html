@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To Do</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+</head>
+<body ng-app="toDoApp">
+  <div ng-controller="toDoController">
+    <form ng-submit="addTask()">
+      <input type="text" ng-model="taskDesc" placeholder="Enter new task">
+      <button type="submit">Add Task</button>
+    </form>
+
+    Total Task: {{tasks.length}}
+    Completed Task: {{completedTask()}}
+
+    <ul>
+      <li ng-repeat="(id, task) in tasks">
+        <div>
+          <label for="">
+            <input type="checkbox" ng-model="task.completed">
+          {{task.taskDescription}}
+          </label>
+        </div>
+        <button ng-click="removeTask(id)">
+          Remove
+        </button>
+
+
+      </li>
+
+    </ul>
+
+
+  </div>
+
+  <!-- <div ng-controller="toDoDirective">
+    {{message}}
+  </div> -->
+
+  <script src="to-do-controller.js"></script>
+<!--   <script src="to-do-directive.js"></script> -->
+</body>
+</html>
